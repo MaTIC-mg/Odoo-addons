@@ -8,4 +8,11 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>matic_l10n_mg_res_state</name>
+			<type>2</type>
+			<location>/media/rralaiarimanga/DATA/01-WORK FOLDER/MATIC/03-PROJECT/Odoo/addon/matic/matic_l10n_mg_res_state</location>
+		</link>
+	</linkedResources>
 </projectDescription>
