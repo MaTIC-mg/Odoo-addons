@@ -1,0 +1,174 @@
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_diana0}:
+    code: MG01
+    country_id: base.mg
+    name: Diana
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_sava0}:
+    code: MG02
+    country_id: base.mg
+    name: Sava
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_itasy0}:
+    code: MG03
+    country_id: base.mg
+    name: Itasy
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_analamanga0}:
+    code: MG04
+    country_id: base.mg
+    name: Analamanga
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_vakinankaratra0}:
+    code: MG05
+    country_id: base.mg
+    name: Vakinankaratra
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_bongolava0}:
+    code: MG06
+    country_id: base.mg
+    name: Bongolava
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_sofia0}:
+    code: MG07
+    country_id: base.mg
+    name: Sofia
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_boeny0}:
+    code: MG08
+    country_id: base.mg
+    name: Boeny
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_betsiboka0}:
+    code: MG09
+    country_id: base.mg
+    name: Betsiboka
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_melaky0}:
+    code: MG10
+    country_id: base.mg
+    name: Melaky
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_alaotramangoro0}:
+    code: MG11
+    country_id: base.mg
+    name: Alaotra-Mangoro
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_atsinanana0}:
+    code: MG12
+    country_id: base.mg
+    name: Atsinanana
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_analanjirofo0}:
+    code: MG13
+    country_id: base.mg
+    name: Analanjirofo
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_amoronimania0}:
+    code: MG14
+    country_id: base.mg
+    name: Amoron'i Mania
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_hautematsiatra0}:
+    code: MG15
+    country_id: base.mg
+    name: Haute Matsiatra
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_vatovavyfitovinany0}:
+    code: MG16
+    country_id: base.mg
+    name: Vatovavy-Fitovinany
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_atsimoatsinanana0}:
+    code: MG17
+    country_id: base.mg
+    name: Atsimo-Atsinanana
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_ihorombe0}:
+    code: MG18
+    country_id: base.mg
+    name: Ihorombe
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_menabe0}:
+    code: MG19
+    country_id: base.mg
+    name: Menabe
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_atsimoandrefana0}:
+    code: MG20
+    country_id: base.mg
+    name: Atsimo-Andrefana
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_androy0}:
+    code: MG21
+    country_id: base.mg
+    name: Androy
+
+- 
+  Creating a res.country.state record
+- 
+  !record {model: res.country.state, id: res_country_state_anosy0}:
+    code: MG22
+    country_id: base.mg
+    name: Anosy
