@@ -3,7 +3,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_amboasarysud0}:
     code: D001
-    country_state_id: l10n_mg_res_stat.res_country_state_anosy0
+    country_state_id: l10n_mg_res_state.res_country_state_anosy0
     name: Amboasary Sud
 
 - 
@@ -11,7 +11,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_betroka0}:
     code: D002
-    country_state_id: l10n_mg_res_stat.res_country_state_anosy0
+    country_state_id: l10n_mg_res_state.res_country_state_anosy0
     name: Betroka
 
 - 
@@ -19,7 +19,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_taolanaro0}:
     code: D003
-    country_state_id: l10n_mg_res_stat.res_country_state_anosy0
+    country_state_id: l10n_mg_res_state.res_country_state_anosy0
     name: Taolanaro
 
 - 
@@ -27,7 +27,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_ambatoboeny0}:
     code: D004
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Ambato-Boeny
 
 - 
@@ -35,7 +35,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_mahajangai0}:
     code: D005
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Mahajanga I
 
 - 
@@ -43,7 +43,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_mahajangaii0}:
     code: D006
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Mahajanga II
 
 - 
@@ -51,7 +51,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_marovoay0}:
     code: D007
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Marovoay
 
 - 
@@ -59,7 +59,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_mitsinjo0}:
     code: D008
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Mitsinjo
 
 - 
@@ -67,7 +67,7 @@
 - 
   !record {model: res.country.district, id: res_country_district_soalala0}:
     code: D009
-    country_state_id: l10n_mg_res_stat.res_country_state_boeny0
+    country_state_id: l10n_mg_res_state.res_country_state_boeny0
     name: Soalala
 
 
