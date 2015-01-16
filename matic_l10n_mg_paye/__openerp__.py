@@ -23,6 +23,11 @@
     - Gestion des congés  :Calcul automatique des congés non payés à partir du module hr_holidays
     - Comptabilisation de la paie :  configuration des comptes de credit et de débit
     - Reporting : les  bulletins de paie,journale de paie ,Ordres de virement ...
+
+Contacts :
+----------
+    * Roland Harimbola RALAIARIMANGA ; 
+    * <roland.ralaiarimanga@matic.mg> for any help or question about this module.
     """,
     'active': False,
     'update_xml':['l10n_mg_paye_view.xml'],
