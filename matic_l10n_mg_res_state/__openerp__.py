@@ -17,7 +17,7 @@ Contacts :
     * Roland Harimbola RALAIARIMANGA ; 
     * <roland.ralaiarimanga@matic.mg> for any help or question about this module.
     """,
-    'author': 'MaTIC - Madagascar Technologies de l\'information et de la Commucation',
+    'author': 'MaTIC - Madagascar Technologies de l\'Information et de la Commucation',
     'website': 'http://www.matic.mg',
     'license': 'AGPL-3',
     'depends': [
