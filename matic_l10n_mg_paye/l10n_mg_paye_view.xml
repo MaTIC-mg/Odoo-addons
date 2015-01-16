@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+     <record id="hr_contract_view_form_l10n_mg_paye" model="ir.ui.view">
+            <field name="name">hr.contract.view.form.l10n.mg.paye</field>
+            <field name="model">hr.contract</field>
+            <field name="priority">20</field>
+			
+            <field name="inherit_id" ref="hr_payroll.hr_contract_form_inherit"/>
+			
+            <field name="arch" type="xml">
+				 				 
+	         <field name="struct_id" position="after">
+                    <field name="categorie"/>
+                    <field name="echellon"/>
+                    <field name="indice"/>
+                 </field>
+				<field name="working_hours" position="replace">
+				    <field name="horaire_hebdo" string="Horaire hebdomadaire"/>
+					<field name="payment_mode"/>
+				  </field>
+            </field>
+        </record>
+		
+		<record id="res_company_form_l10n_mg_paye" model="ir.ui.view">
+            <field name="name">res.company.form.l10n.mg.paye</field>
+            <field name="model">res.company</field>
+            <field name="priority">20</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+            <data>
+                 <xpath expr="//group[@name='account_grp']" position="after">
+                    <group string="Paie">
+                            <field name="seuil_irsa"/>
+                            <field name="taux_irsa"/>
+                            <field name="abat_irsa"/>
+                            <newline/>
+                            <field name="num_cnaps_patr"/>
+                            <field name="plafond_cnaps"/>
+                            <field name="cotisation_cnaps_patr"/>
+                            <field name="cotisation_cnaps_emp"/>
+                            <newline/>
+                            <field name="org_sante"/>
+                            <field name="cotisation_sante_patr"/>
+                            <field name="cotisation_sante_emp"/>
+                            <newline/>
+                            <field name="conge_mens"/>
+                    </group>
+                 </xpath>
+            </data>
+            </field>
+        </record>
+		
+		<record id="hr_employee_form_l10n_mg_paye" model="ir.ui.view">
+            <field name="name">hr.employee.form.l10n.mg.paye</field>
+            <field name="model">hr.employee</field>
+            <field name="priority">30</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+
+				  <field name="identification_id" position="replace">
+				    <field name="num_cnaps_emp" string="N° CNAPS"/>
+				  </field>					 				 
+				  <field name="bank_account_id" position="after">
+				    <field name="num_cin"/>
+				  </field>    			
+				  <field name="otherid" position="replace">
+				    <field name="num_emp" string="N° Matricule"/>
+				  </field>
+           			
+				
+			</field>
+		</record>
+		
+		<report
+            auto="False"
+            header="False"
+            id="fiche_paye"
+            model="hr.payslip"
+            name="fiche.paye"
+            rml="matic_l10n_mg_paye/report/fiche_paye_mg.rml"
+            string="Fiche de Paie Malagasy" />
+			
+		<record id="hr_payroll_irsa_tree_filter" model="ir.ui.view">
+            <field name="name">hr.payroll.irsa.tree.filter</field>
+            <field name="model">my.report.irsa</field>
+            <field name="arch" type="xml">	
+				<search string="Recherche">
+					<field name="num_emp" string="Matricule"/>
+					<field name="num_cin" string="CIN"/>
+					<group expand="0" string="Group By...">
+                        <filter string="matricule" icon="terp-personal+" domain="[]" context="{'group_by':'num_emp'}"/>
+                    </group>
+				</search>
+            </field>
+        </record>
+		<record id="hr_payroll_irsa_tree" model="ir.ui.view">
+            <field name="name">hr.payroll.irsa.tree</field>
+            <field name="model">my.report.irsa</field>
+            <field name="arch" type="xml">
+			    <tree string="Déclaration IRSA">
+                    <field name="num_emp"/>
+					<field name="name_related"/>
+					<field name="num_cin"/>
+					<field name="basic"/>
+					<field name="omsi"/>
+					<field name="cnaps"/>
+					<field name="brut"/>
+					<field name="irsa"/>
+					<field name="net"/>
+					<field name="date_from"/>
+					<field name="date_to"/>
+                </tree>
+            </field>
+        </record>		
+		<record id="open_payroll_irsa" model="ir.actions.act_window">
+            <field name="name">IRSA</field>
+            <field name="res_model">my.report.irsa</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_payroll_irsa_tree"/>
+        </record>
+		
+        <menuitem id="menu_payroll_irsa"
+            action="open_payroll_irsa"
+            parent="hr_payroll.menu_hr_root_payroll"
+            sequence="16"/>
+			
+    </data>
+</openerp>
