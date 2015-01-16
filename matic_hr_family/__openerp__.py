@@ -26,7 +26,15 @@
 Employee Family Information
 ===========================
 
-    Enter extra information about employee's family
+    Pour la gestion des membres de la famille d'un(e) salarié(e) :
+	- Epoux(se) : Details
+	- Enfants : Nom et Prénoms, Date de naissance et sexe
+
+Contacts :
+----------
+    * Roland Harimbola RALAIARIMANGA ; 
+    * <roland.ralaiarimanga@matic.mg> for any help or question about this module.
+    
     """,
     'author': 'MaTIC - Madagascar Technologies de l\'Information et de la Communication',
     'website': 'http://www.matic.mg',
