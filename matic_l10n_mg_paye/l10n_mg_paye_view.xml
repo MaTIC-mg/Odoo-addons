@@ -17,7 +17,7 @@
                     <field name="echellon"/>
                     <field name="indice"/>
                  </field>
-				<field name="working_hours" position="replace">
+				<field name="working_hours" position="after">
 				    <field name="horaire_hebdo" string="Horaire hebdomadaire"/>
 					<field name="payment_mode"/>
 				  </field>
@@ -81,8 +81,23 @@
             model="hr.payslip"
             name="fiche.paye"
             rml="matic_l10n_mg_paye/report/fiche_paye_mg.rml"
-            string="Fiche de Paie Malagasy" />
-			
+            string="Fiche de Paie Malagasy" />	
+			<report
+            auto="False"
+            header="False"
+            id="irsa"
+            model="my.report.irsa"
+            name="irsa"
+            rml="matic_l10n_mg_paye/report/rapport_irsa.rml"
+            string="IRSA Malagasy" />
+		<report
+            auto="False"
+            header="False"
+            id="cnaps"
+            model="hr.payslip"
+            name="cnaps"
+            rml="matic_l10n_mg_paye/report/rapport_cnaps.rml"
+            string="CNAPS Malagasy" />	
 		<record id="hr_payroll_irsa_tree_filter" model="ir.ui.view">
             <field name="name">hr.payroll.irsa.tree.filter</field>
             <field name="model">my.report.irsa</field>

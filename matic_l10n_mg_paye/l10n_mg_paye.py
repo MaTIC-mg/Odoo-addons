@@ -9,7 +9,7 @@ class hr_contract(osv.osv):
         'echellon': fields.char('Echellon', size=64),
         'indice': fields.integer('Indice', size=10),
         'horaire_hebdo': fields.float('Horaire hébdomadaire',digits_compute=dp.get_precision('Payroll')),
-	'payment_mode': fields.selection([('VIREMENT', 'VIREMENT'),('ESPECE', 'ESPECE')], 'Mode de paiement'),
+		'payment_mode': fields.selection([('VIREMENT', 'VIREMENT'),('ESPECE', 'ESPECE')], 'Mode de paiement'),
     }
 hr_contract()
 

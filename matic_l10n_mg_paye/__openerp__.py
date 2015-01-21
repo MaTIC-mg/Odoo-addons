@@ -4,7 +4,7 @@
     'author': 'MaTIC - Madagascar Technologies de l\'Information et de la Communication',
     'website': 'http://www.matic.mg',
     "category" : "Localization",
-    'version': '1.0',
+    'version': '1.1',
     'depends': ['hr_payroll'],
     
 	

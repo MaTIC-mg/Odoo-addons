@@ -22,4 +22,7 @@
 
 import l10n_mg_paye
 import my_report_irsa
+import cnaps
+import rapport_irsa
+
 

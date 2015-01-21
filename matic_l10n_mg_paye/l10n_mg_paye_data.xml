@@ -16,11 +16,6 @@
             <field name="partner_id" eval="False"/>
         </record>
 
-        <record id="BASIC" model="hr.salary.rule.category">
-            <field name="name">Basic</field>
-            <field name="code">BASIC</field>
-        </record>
-
         <record id="ALW" model="hr.salary.rule.category">
             <field name="name">Allowance</field>
             <field name="code">ALW</field>
@@ -113,7 +108,7 @@
 		<field name="condition_select">none</field>
 		<field name="amount_select">code</field>
         <field name="amount_python_compute">if categories.GROSS &lt; contract.employee_id.company_id.plafond_cnaps: result = categories.GROSS*contract.employee_id.company_id.cotisation_cnaps_emp/100
-else: result = contract.employee_id.company_id.plafond_cnaps</field>
+else: result = contract.employee_id.company_id.plafond_cnaps/100</field>
         <field name="appears_on_payslip" eval="True"/>
         <field name="register_id" ref="hr_CNAPS_register"/>
 		<field name="note">C'est la valeur de CNAPS de chaque salarié , qui s'appuit sur la valeur du salaire "Brut" calculé.</field>
@@ -126,7 +121,7 @@ else: result = contract.employee_id.company_id.plafond_cnaps</field>
 		<field name="condition_select">none</field>
 		<field name="amount_select">code</field>
         <field name="amount_python_compute">if categories.GROSS &lt; contract.employee_id.company_id.plafond_cnaps: result = categories.GROSS*contract.employee_id.company_id.cotisation_cnaps_patr/100
-else: result = contract.employee_id.company_id.plafond_cnaps*cotisation_cnaps_patr</field>
+else: result = contract.employee_id.company_id.plafond_cnaps*contract.employee_id.company_id.cotisation_cnaps_patr/100</field>
         <field name="appears_on_payslip" eval="False"/>
         <field name="register_id" ref="hr_CNAPS_register"/>
 		<field name="note">C'est la valeur de CNAPS de l'employeur , qui s'appuit sur la valeur du salaire "Brut" calculé.</field>
@@ -399,8 +394,8 @@ else : result = 0</field>
 	 <!-- Salary Structure -->
 	 
 	 <record id="hr_payroll_salary_structure_base" model="hr.payroll.structure">
-        <field name="code">malagasy-paie</field>
-        <field name="name">Base legale paie Employe Malagasy</field>
+        <field name="code">Tu-Base-horaire</field>
+        <field name="name">Cotisations de base Employe Malagasy</field>
                 <field name="company_id" ref="base.main_company"/>
         <field name="parent_id" ref="hr_payroll.structure_base"/>
 		<field name="note">Cette rubrique représente la structure des employés Malagasy.</field>

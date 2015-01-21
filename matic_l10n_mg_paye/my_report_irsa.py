@@ -8,7 +8,7 @@ class my_report_irsa(osv.osv):
     _columns = {
 	'id': fields.char('ID', size=128, readonly=True),
 		'num_emp': fields.char('Matricule', size=128, readonly=True),
-		'num_cin': fields.char('Matricule', size=128, readonly=True),
+		'num_cin': fields.char('CIN', size=128, readonly=True),
         'name_related': fields.char('Nom', size=128, readonly=True),
         'basic': fields.float('Salaire de base', readonly=True),
         'omsi': fields.float('OMSI Travailleur', readonly=True),
