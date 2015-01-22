@@ -15,23 +15,26 @@
             <field name="name">Employees</field>
             <field name="partner_id" eval="False"/>
         </record>
-
-        <record id="ALW" model="hr.salary.rule.category">
+		<record id="hr_payroll.BASIC" model="hr.salary.rule.category">
+			<field name="name">BASIC</field>
+			<field name="code">BASIC</field>
+		</record>
+        <record id="hr_payroll.ALW" model="hr.salary.rule.category">
             <field name="name">Allowance</field>
             <field name="code">ALW</field>
         </record>
 
-        <record id="GROSS" model="hr.salary.rule.category">
-            <field name="name">Salaire Brut</field>
+        <record id="hr_payroll.GROSS" model="hr.salary.rule.category">
+            <field name="name">GROSS</field>
             <field name="code">GROSS</field>
         </record>
 
-        <record id="DED" model="hr.salary.rule.category">
+        <record id="hr_payroll.DED" model="hr.salary.rule.category">
             <field name="name">Deduction</field>
             <field name="code">DED</field>
         </record>
 
-        <record id="NET" model="hr.salary.rule.category">
+        <record id="hr_payroll.NET" model="hr.salary.rule.category">
             <field name="name">Net</field>
             <field name="code">NET</field>
         </record>
@@ -59,6 +62,10 @@
 		<field name="name">TOTAL_DED</field>
 		<field name="code">TOTAL_DED</field>
 	</record>
+	<record id="HOURS" model="hr.salary.rule.category">
+		<field name="name">HOURS</field>
+		<field name="code">HOURS</field>
+	</record>
 			
 	  <!-- Contribution Register -->
 
@@ -71,26 +78,26 @@
     </record>
 
 	<!-- HR SALARY RULES-->
-	<record id="hr_rule_basic" model="hr.salary.rule">
-            <field name="name">Basic</field>
+	<record id="hr_payroll.hr_rule_basic" model="hr.salary.rule">
+            <field name="name">Salaire de Base</field>
             <field name="sequence" eval="1"/>
             <field name="code">BASIC</field>
-            <field name="category_id" ref="BASIC"/>
+            <field name="category_id" ref="hr_payroll.BASIC"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = contract.wage</field>
         </record>
-        <record id="hr_rule_taxable" model="hr.salary.rule">
+        <record id="hr_payroll.hr_rule_taxable" model="hr.salary.rule">
             <field name="name">Salaire Brut</field>
             <field name="sequence" eval="100"/>
             <field name="code">GROSS</field>
-            <field name="category_id" ref="GROSS"/>
+            <field name="category_id" ref="hr_payroll.GROSS"/>
             <field name="condition_select">none</field>
             <field name="amount_select">code</field>
             <field name="amount_python_compute">result = categories.BASIC + categories.ALW</field>
         </record>
 	 <record id="hr_payroll.hr_rule_net" model="hr.salary.rule">
-        <field name="category_id" ref="NET"/>
+        <field name="category_id" ref="hr_payroll.NET"/>
         <field name="name">Salaire Net</field>
 		<field name="code">NET</field>
         <field name="sequence">200</field>
@@ -174,15 +181,15 @@ else: result = contract.employee_id.company_id.plafond_cnaps*contract.employee_i
     </record>
 	
 	<record id="hr_payroll_rules_IRSA" model="hr.salary.rule">
-        <field name="category_id" ref="DED"/>
+        <field name="category_id" ref="hr_payroll.DED"/>
         <field name="name">IRSA</field>
         <field name="code">IRSA</field>
         <field name="sequence">110</field>
 		<field name="condition_select">none</field>
 		<field name="amount_select">code</field>
-        <field name="amount_python_compute">Salimposable=categories.GROSS-categories.CNAPS-categories.OMSI-contract.employee_id.company_id.abat_irsa*employee.children
+        <field name="amount_python_compute">Salimposable=categories.GROSS-categories.CNAPS-categories.OMSI
 if Salimposable &lt;contract.employee_id.company_id.seuil_irsa: result=0
-else: result= (Salimposable-contract.employee_id.company_id.seuil_irsa)*contract.employee_id.company_id.taux_irsa/100</field>
+else: result= (Salimposable-contract.employee_id.company_id.seuil_irsa)*contract.employee_id.company_id.taux_irsa/100-contract.employee_id.company_id.abat_irsa*employee.children</field>
         <field name="appears_on_payslip" eval="True"/>
         <field name="note">C'est la valeur de l'IRSA de chaque salarié , qui s'appuit sur la valeur du salaire "Imposable" calculé.</field>
     </record> 
@@ -190,17 +197,17 @@ else: result= (Salimposable-contract.employee_id.company_id.seuil_irsa)*contract
         <field name="name">Salaire de base horaire</field>
         <field name="code">BASIC</field>
         <field name="sequence">6</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">HWORK</field>
         <field name="amount_percentage">100</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">La règle du salaire de base horaire: le calcul de cette règle s’effectue sur cette valeur modifiable dans le bulletin de paie (en quantité), et sur 100% de la valeur défini dans le champ “Salaire” du contrat associé à ce bulletin de paie.</field>
 	</record>
 	<record id="hr_rule_basic_hwork" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="HOURS"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_hor"/>
         <field name="name">HWORK</field>
         <field name="code">HWORK</field>
@@ -216,17 +223,17 @@ else : result=contract.horaire_hebdo*52/12</field>
         <field name="name">Heure sup 1</field>
         <field name="code">HS1</field>
         <field name="sequence">11</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">MHS1</field>
         <field name="amount_percentage">130</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">Heure supplémentaire 1.</field>
 	</record>
 	<record id="hr_rule_basic_MHS1" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_HS1"/>
         <field name="name">Montant HS1</field>
         <field name="code">MHS1</field>
@@ -242,17 +249,17 @@ else : result=0</field>
         <field name="name">Heure sup 2</field>
         <field name="code">HS2</field>
         <field name="sequence">13</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">MHS2</field>
         <field name="amount_percentage">150</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">Heure supplémentaire 1.</field>
 	</record>
 	<record id="hr_rule_basic_MHS2" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_HS2"/>
         <field name="name">Montant HS2</field>
         <field name="code">MHS2</field>
@@ -268,17 +275,17 @@ else : result=0</field>
         <field name="name">Heure majoré nuit</field>
         <field name="code">HMNUIT</field>
         <field name="sequence">14</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">MHMNUIT</field>
         <field name="amount_percentage">50</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">C'est le montant de l'heure majoré nuit.</field>
 	</record>
 	<record id="hr_rule_basic_MHMNUIT" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_HMNUIT"/>
         <field name="name">Montant HMNUIT</field>
         <field name="code">MHMNUIT</field>
@@ -294,17 +301,17 @@ else : result=0</field>
         <field name="name">Heure majoré dimanche</field>
         <field name="code">HMDIM</field>
         <field name="sequence">15</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">MHMDIM</field>
         <field name="amount_percentage">40</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">C'est le montant de l'heure majoré dimanche.</field>
 	</record>
 	<record id="hr_rule_basic_MHMDIM" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_HMDIM"/>
         <field name="name">Montant HMDIM</field>
         <field name="code">MHMDIM</field>
@@ -320,17 +327,17 @@ else : result=0</field>
         <field name="name">Heure majoré jour férié</field>
         <field name="code">HMJF</field>
         <field name="sequence">16</field>
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="condition_select">none</field>
 		<field name="amount_select">percentage</field>
-		<field name="amount_percentage_base">contract.wage/(contract.horaire_hebdo*52/12)</field>
+		<field name="amount_percentage_base">contract.wage/HWORK</field>
 		<field name="quantity">MHMJF</field>
         <field name="amount_percentage">100</field>
 		<field name="appears_on_payslip" eval="True"/>
 		<field name="note">C'est le montant de l'heure majoré jour férié.</field>
 	</record>
 	<record id="hr_rule_basic_MHMJF" model="hr.salary.rule">
-        <field name="category_id" ref="BASIC"/>
+        <field name="category_id" ref="hr_payroll.BASIC"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_HMJF"/>
         <field name="name">Montant HMJF</field>
         <field name="code">MHMJF</field>
@@ -343,7 +350,7 @@ else : result=0</field>
         <field name="note">C'est le nombre d'heure travaillé en jour férié.</field>
     </record> 
 	<record id="hr_rule_basic_AVANCE15" model="hr.salary.rule">
-        <field name="category_id" ref="DED"/>
+        <field name="category_id" ref="hr_payroll.DED"/>
 		<field name="name">Avance quinzaine</field>
         <field name="code">AVANCE15</field>
         <field name="sequence">117</field>
@@ -354,7 +361,7 @@ else : result=0</field>
         <field name="note">C'est le Montant avance quinzaine.</field>
     </record> 
 	<record id="hr_rule_basic_MAVANCE15" model="hr.salary.rule">
-        <field name="category_id" ref="NET"/>
+        <field name="category_id" ref="hr_payroll.NET"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_AVANCE15"/>
 		<field name="name">Montant avance quinzaine</field>
         <field name="code">MAVANCE15</field>
@@ -367,7 +374,7 @@ else : result = 0</field>
         <field name="note">C'est le Montant avance quinzaine.</field>
     </record> 
 	<record id="hr_rule_basic_AVANCESP" model="hr.salary.rule">
-        <field name="category_id" ref="DED"/>
+        <field name="category_id" ref="hr_payroll.DED"/>
 		<field name="name">Avance spécial</field>
         <field name="code">AVANCESP</field>
         <field name="sequence">119</field>
@@ -378,7 +385,7 @@ else : result = 0</field>
         <field name="note">C'est le Montant avance spécial.</field>
     </record> 
 	<record id="hr_rule_basic_MAVANCESP" model="hr.salary.rule">
-        <field name="category_id" ref="NET"/>
+        <field name="category_id" ref="hr_payroll.NET"/>
 		<field name="parent_rule_id" ref="hr_rule_basic_AVANCESP"/>
 		<field name="name">Montant avance spécial</field>
         <field name="code">MAVANCESP</field>
@@ -394,8 +401,8 @@ else : result = 0</field>
 	 <!-- Salary Structure -->
 	 
 	 <record id="hr_payroll_salary_structure_base" model="hr.payroll.structure">
-        <field name="code">Tu-Base-horaire</field>
-        <field name="name">Cotisations de base Employe Malagasy</field>
+        <field name="code">Mg-Base-horaire</field>
+        <field name="name">Structure Malagasy</field>
                 <field name="company_id" ref="base.main_company"/>
         <field name="parent_id" ref="hr_payroll.structure_base"/>
 		<field name="note">Cette rubrique représente la structure des employés Malagasy.</field>

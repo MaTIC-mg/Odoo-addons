@@ -356,7 +356,7 @@
     <para style="P11">
       <font color="white"> </font>
     </para>
-	  <blockTable colWidths="110.0,56.0,57.0,58.0,57.0,65.0,112.0" style="Tableau18">
+	  <blockTable colWidths="110.0,65.0,45.0,58.0,65.0,65.0,110.0" style="Tableau18">
       <tr>
         <td>
           <para style="P15">DESIGNATION</para>
@@ -381,7 +381,7 @@
         </td>
 		 </tr>
     </blockTable>
-	<blockTable colWidths="110.0,56.0,57.0,58.0,57.0,65.0,56.0,56.0" style="Tableau28">
+	<blockTable colWidths="110.0,65.0,45.0,58.0,65.0,65.0,45.0,65.0" style="Tableau28">
       <tr>
         <td>
           <para style="P15"></para>
@@ -411,7 +411,7 @@
     </blockTable> 
     <section>
       <para style="terp_default_8">[[repeatIn(get_payslip_lines(o.line_ids),'p')]]</para>
-      <blockTable colWidths="110.0,56.0,57.0,58.0,57.0,65.0,56.0,56.0" style="Tableau8">
+      <blockTable colWidths="110.0,65.0,45.0,58.0,65.0,65.0,45.0,65.0" style="Tableau8">
         <tr>
           <td>
             <para style="P7">[[ p.name or '' ]]</para>
@@ -446,7 +446,7 @@
         </tr>
 		</blockTable>
 		</section>
-		<blockTable colWidths="110.0,56.0,57.0,58.0,57.0,65.0,56.0,56.0" style="Tableau8">
+		<blockTable colWidths="110.0,65.0,45.0,58.0,65.0,65.0,45.0,65.0" style="Tableau8">
       <tr>
         <td>
           <para style="P20">TOTAL</para>

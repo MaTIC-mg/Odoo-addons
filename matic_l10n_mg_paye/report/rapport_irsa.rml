@@ -124,6 +124,7 @@
     <images/>
   </stylesheet>
   <story>
+  <para style="P2">[[repeatIn(objects,'o')]]</para>
     <section>
       <para style="P10">
         <font color="white"> </font>
@@ -131,7 +132,7 @@
       <para style="terp_default_2">
         <font color="white"> </font>
       </para>
-      <blockTable colWidths="210.0,60.0,160.0,80.0" style="Tableau2">
+      <blockTable colWidths="210.0,80.0,80.0,80.0" style="Tableau2">
         <tr>
           <td>
             <para style="P1">Nom/Prenom</para>
@@ -151,8 +152,8 @@
         <font color="white"></font>
       </para>
        <section>
-        <para style="P9">[[ repeatIn(get_payslip_lines(objects),'j')]]</para>
-        <blockTable colWidths="210.0,60.0,160.0,80.0" style="Tableau3">
+        <para style="P9">[[ repeatIn(get_irsa(objects),'j')]]</para>
+        <blockTable colWidths="210.0,80.0,80.0,80.0" style="Tableau3">
           <tr>
             <td>
               <para style="P6">[[ j['name_related'] ]]</para>
