@@ -60,11 +60,14 @@ class cnaps_parser(report_sxw.rml_parse):
 			category_total += line.total
 
 		return category_total
+
+
 	def get_irsa(self,objs):
 		sql="""select p.employee_id as id,date_from,date_to,emp.num_emp,emp.num_cin,emp.num_cnaps_emp,emp.name_related,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='BASIC') as basic,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='OMSI_EMP')as omsi,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='OMSI_PAT')as omsiemp,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='CNAPS_EMP')as cnaps,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='CNAPS_PAT')as cnapsemp,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='GROSS')as brut,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='IRSA')as irsa,(select total from hr_payslip_line pl where pl.slip_id=p.id AND pl.code='NET')as net from hr_payslip p inner join hr_employee emp on p.employee_id=emp.id """
 		self.cr.execute(sql)
 		res=self.cr.dictfetchall()
 		return res
+
 
 	def get_employer_line(self, obj, parent_line):
 
